@@ -17,7 +17,12 @@ with open("token.json") as f:
 async def load():
     for filename in os.listdir('./cogs'):
         if filename.endswith('.py'):
-            await bot.load_extension(f'cogs.{filename[:-3]}')
+            try:
+                print(f"Loading extension {filename[:-3]}")
+                await bot.load_extension(f'cogs.{filename[:-3]}')
+            except:
+                print(f"An error occured while loading extension {filename[:-3]}")
+    print("Successfully loaded all of the extensions!")
 
 async def main():
     await load()
