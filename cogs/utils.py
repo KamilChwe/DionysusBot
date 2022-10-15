@@ -35,7 +35,7 @@ class utils(commands.Cog):
 
         # Core of the embed
         embed = discord.Embed(
-            color=discord.Colour.from_rgb(153,0,204)
+            colour=discord.Colour.from_rgb(153,0,204)
         )
         # Additional fields of the embed
         embed.set_footer(text=f"Requested by: {ctx.author}")
@@ -60,4 +60,5 @@ class utils(commands.Cog):
 
 # This sets up our cog and adds all of its functionality to the bot client.
 async def setup(bot):
+    print("Loading utils extension...")
     await bot.add_cog(utils(bot))
