@@ -7,6 +7,7 @@ import os
 
 ## Utility Cog ##
 # This cog holds all of the utility commands which help in debuging and stuff along these lines
+# This cog is also responsible for all the error handling
 class utils(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -22,7 +23,7 @@ class utils(commands.Cog):
     @commands.command()
     async def ping(self, ctx):
         # Get the bot latency and times it by 1000 to get the ms it took
-        await ctx.send(f"Pong! \nLatency: {round(self.bot.latency * 1000)}ms")
+        await ctx.send(f"Pong!:ping_pong: \nLatency: {round(self.bot.latency * 1000)}ms")
     
     # Bot Statistics
     @commands.command()
@@ -54,9 +55,9 @@ class utils(commands.Cog):
         for filename in os.listdir('./cogs'):
             if filename.endswith('.py'):
                 print(f"Reloading extension {filename[:-3]}")
-                await ctx.send(f"Reloading extension {filename[:-3]}")
+                await ctx.send(f":arrows_counterclockwise: Reloading extension {filename[:-3]}")
                 await self.bot.reload_extension(f"cogs.{filename[:-3]}")
-        await ctx.send("Reloaded all of the extension!")
+        await ctx.send(":ballot_box_with_check: Reloaded all of the extension!")
 
 # This sets up our cog and adds all of its functionality to the bot client.
 async def setup(bot):

@@ -3,7 +3,7 @@ from discord.ext import commands
 import random
 
 ## Games Cog ##
-# This cog golds all of the minigame commands
+# This cog holds all of the minigame commands
 class games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -39,7 +39,6 @@ class games(commands.Cog):
         embed.set_author(name="Rock Paper Scissors")
         embed.set_footer(text=f"Requested by {ctx.author}")
         await ctx.send(embed=embed)
-        
 
 async def setup(bot):
     print("Loading games extension...")
