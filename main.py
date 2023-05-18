@@ -9,6 +9,9 @@ import os
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
+# TODO - Allow for custom prefixes.
+# This can easily be achieved by using a config file to read from
+# OR if this bot is published use a DB instead and store which server uses what prefix.
 bot = commands.Bot(command_prefix="=", intents=intents, help_command=None)
 
 # Load the token from the JSON file

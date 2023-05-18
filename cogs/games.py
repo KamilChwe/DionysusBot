@@ -20,7 +20,7 @@ class games(commands.Cog):
         
         # Tie Condition
         if playerChoice == botChoice:
-            outcome == "It's a tie"
+            outcome = "It's a tie"
             conditionColour = "#404040" #Grey
         # Win conditions
         elif playerChoice == "rock" and botChoice == "scissors" or playerChoice == "paper" and botChoice == "rock" or playerChoice == "scissors" and botChoice == "paper":

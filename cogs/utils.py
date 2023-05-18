@@ -20,12 +20,37 @@ class utils(commands.Cog):
         print("Dionysus: Online")
 
     # Basic ping command
+    ## This basically lets me check if the bot is dead and if not how slow it is
     @commands.command()
     async def ping(self, ctx):
         # Get the bot latency and times it by 1000 to get the ms it took
         await ctx.send(f"Pong!:ping_pong: \nLatency: {round(self.bot.latency * 1000)}ms")
-    
+
+    # Basic help command
+    ## DMs the user the commands and how to use them properly
+    @commands.command()
+    async def help(self, ctx):
+                # Core of the embed
+        embed = discord.Embed(
+            colour=discord.Colour.from_rgb(153,0,204), description="A list of all of the commands Dionysus has to offer.", title="Dionysus' Commands"
+        )
+        # Additional fields of the embed
+        embed.set_author(name="Dionysus' Help")
+        embed.add_field(name="Utility", value="Helpful commands for debugging.\n\n**ping: ** Sanity check to see if the bot lives\n**botInfo:** Allows you to see nerdy stats", inline=False)
+        embed.add_field(name="Games", value="Minigames!\n\n**RPS: ** Rock, Paper, Scissors. Simply type rps <your choice>", inline=False)
+        embed.add_field(name="Character Box", value="Not yet finished", inline=False)
+        # Send the completed embed to the user's DM
+        # Send a confirmation that the DM has been sent!
+        try:
+            await ctx.author.send(embed=embed)
+            await ctx.message.add_reaction("📨")
+            await ctx.send("DM sent!")
+        except:
+            await ctx.send("Could not send a DM!\nPlease check if you're blocking DMs from unknown users.")
+        
+
     # Bot Statistics
+    ## Displays some useful stats about the bots current operations
     @commands.command()
     async def botInfo(self, ctx):
         # Gathering all the necessary info
@@ -52,12 +77,14 @@ class utils(commands.Cog):
     # Reloads all of the extensions
     @commands.command()
     async def reload(self, ctx):
+        await self.bot.change_presence(status=discord.Status.idle, activity=discord.Game(name="Reloading."))
         for filename in os.listdir('./cogs'):
             if filename.endswith('.py'):
                 print(f"Reloading extension {filename[:-3]}")
                 await ctx.send(f":arrows_counterclockwise: Reloading extension {filename[:-3]}")
                 await self.bot.reload_extension(f"cogs.{filename[:-3]}")
         await ctx.send(":ballot_box_with_check: Reloaded all of the extension!")
+        await self.bot.change_presence(status=discord.Status.online, activity=discord.Game(name="type \"=help\""))
 
 # This sets up our cog and adds all of its functionality to the bot client.
 async def setup(bot):
