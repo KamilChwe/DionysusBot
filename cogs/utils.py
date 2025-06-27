@@ -38,7 +38,6 @@ class utils(commands.Cog):
         embed.set_author(name="Dionysus' Help")
         embed.add_field(name="Utility", value="Helpful commands for debugging.\n\n**ping: ** Sanity check to see if the bot lives\n**botInfo:** Allows you to see nerdy stats", inline=False)
         embed.add_field(name="Games", value="Minigames!\n\n**rps <rock/paper/scissors>: ** Rock, Paper, Scissors. Not much else about it...", inline=False)
-        embed.add_field(name="Character Box", value="Not yet finished", inline=False)
         # Send the completed embed to the user's DM
         # Send a confirmation that the DM has been sent!
         try:

@@ -4,15 +4,20 @@ from discord.ext import commands
 import json
 import os
 
+
 # Declaring intents for Discord,
 # Not really sure how this works and why but oh well
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 # TODO - Allow for custom prefixes.
+# Get the custom prefix (default is "=")
+with open("config.json") as f:
+    config = json.load(f)
+
 # This can easily be achieved by using a config file to read from
 # OR if this bot is published use a DB instead and store which server uses what prefix.
-bot = commands.Bot(command_prefix="=", intents=intents, help_command=None)
+bot = commands.Bot(command_prefix= config["prefix"], intents=intents, help_command=None)
 
 # Load the token from the JSON file
 with open("token.json") as f:
