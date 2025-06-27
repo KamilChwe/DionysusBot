@@ -11,7 +11,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 # TODO - Allow for custom prefixes.
-# Get the custom prefix (default is "=")
+# Get the custom prefix (default is "=")-
 with open("config.json") as f:
     config = json.load(f)
 
