@@ -4,7 +4,7 @@ import random
 
 ## Games Cog ##
 # This cog holds all of the minigame commands
-class games(commands.Cog):
+class Games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -42,4 +42,4 @@ class games(commands.Cog):
 
 async def setup(bot):
     print("Loading games extension...")
-    await bot.add_cog(games(bot))
+    await bot.add_cog(Games(bot))

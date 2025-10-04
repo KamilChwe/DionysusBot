@@ -6,10 +6,14 @@ import psutil
 import os
 
 ## Utility Cog ##
+# Cogs are used in Discord.py to organise commands and listeners
 # This cog holds all of the utility commands which help in debuging and stuff along these lines
 # This cog is also responsible for all the error handling
-class utils(commands.Cog):
+class Utils(commands.Cog):
+    # Constructor for the cog
     def __init__(self, bot):
+        # Assigns the instance of the bot to the class attribute
+        # Allows you to use bot commands anywhere the bot is instanced
         self.bot = bot
 
     # When the bot is ready sent a message to the console
@@ -88,4 +92,4 @@ class utils(commands.Cog):
 # This sets up our cog and adds all of its functionality to the bot client.
 async def setup(bot):
     print("Loading utils extension...")
-    await bot.add_cog(utils(bot))
+    await bot.add_cog(Utils(bot))
